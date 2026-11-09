@@ -2303,6 +2303,13 @@ pub fn config_side_rule_options_types() -> Vec<(&'static str, &'static str, Type
         TypeId::of::<biome_rule_options::no_yaml_boolean_keys::NoYamlBooleanKeysOptions>(),
     ));
     result.push((
+        "nursery",
+        "noYamlEmptySequenceEntries",
+        TypeId::of::<
+            biome_rule_options::no_yaml_empty_sequence_entries::NoYamlEmptySequenceEntriesOptions,
+        >(),
+    ));
+    result.push((
         "style",
         "noYodaExpression",
         TypeId::of::<biome_rule_options::no_yoda_expression::NoYodaExpressionOptions>(),

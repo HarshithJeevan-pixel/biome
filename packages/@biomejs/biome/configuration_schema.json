@@ -8983,6 +8983,16 @@
 			"type": "object",
 			"additionalProperties": false
 		},
+		"NoYamlEmptyMapKeysConfiguration": {
+			"oneOf": [
+				{ "$ref": "#/$defs/RulePlainConfiguration" },
+				{ "$ref": "#/$defs/RuleWithNoYamlEmptyMapKeysOptions" }
+			]
+		},
+		"NoYamlEmptyMapKeysOptions": {
+			"type": "object",
+			"additionalProperties": false
+		},
 		"NoYodaExpressionConfiguration": {
 			"oneOf": [
 				{ "$ref": "#/$defs/RulePlainConfiguration" },
@@ -10346,6 +10356,13 @@
 					"description": "Disallow boolean values as keys in YAML.\nSee https://biomejs.dev/linter/rules/no-yaml-boolean-keys",
 					"anyOf": [
 						{ "$ref": "#/$defs/NoYamlBooleanKeysConfiguration" },
+						{ "type": "null" }
+					]
+				},
+				"noYamlEmptyMapKeys": {
+					"description": "Disallow empty keys in YAML maps.\nSee https://biomejs.dev/linter/rules/no-yaml-empty-map-keys",
+					"anyOf": [
+						{ "$ref": "#/$defs/NoYamlEmptyMapKeysConfiguration" },
 						{ "type": "null" }
 					]
 				},
@@ -17106,6 +17123,15 @@
 			"properties": {
 				"level": { "$ref": "#/$defs/RulePlainConfiguration" },
 				"options": { "$ref": "#/$defs/NoYamlBooleanKeysOptions" }
+			},
+			"additionalProperties": false,
+			"required": ["level"]
+		},
+		"RuleWithNoYamlEmptyMapKeysOptions": {
+			"type": "object",
+			"properties": {
+				"level": { "$ref": "#/$defs/RulePlainConfiguration" },
+				"options": { "$ref": "#/$defs/NoYamlEmptyMapKeysOptions" }
 			},
 			"additionalProperties": false,
 			"required": ["level"]

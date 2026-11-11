@@ -4228,6 +4228,11 @@ export interface Nursery {
 	 */
 	useTopLevelHeading?: UseTopLevelHeadingConfiguration;
 	/**
+	 * Require require() calls to be placed at the top level of the module.
+	 * See https://biomejs.dev/linter/rules/use-top-level-require
+	 */
+	useTopLevelRequire?: UseTopLevelRequireConfiguration;
+	/**
 	 * Enforce the use of the unary minus operator over multiplying or dividing by -1.
 	 * See https://biomejs.dev/linter/rules/use-unary-minus
 	 */
@@ -7381,6 +7386,9 @@ export type UseTanstackQueryStableQueryClientConfiguration =
 export type UseTopLevelHeadingConfiguration =
 	| RulePlainConfiguration
 	| RuleWithUseTopLevelHeadingOptions;
+export type UseTopLevelRequireConfiguration =
+	| RulePlainConfiguration
+	| RuleWithUseTopLevelRequireOptions;
 export type UseUnaryMinusConfiguration =
 	| RulePlainConfiguration
 	| RuleWithUseUnaryMinusOptions;
@@ -10953,6 +10961,10 @@ export interface RuleWithUseTopLevelHeadingOptions {
 	level: RulePlainConfiguration;
 	options?: UseTopLevelHeadingOptions;
 }
+export interface RuleWithUseTopLevelRequireOptions {
+	level: RulePlainConfiguration;
+	options?: UseTopLevelRequireOptions;
+}
 export interface RuleWithUseUnaryMinusOptions {
 	/**
 	 * Controls the applicability of the rule's fix. `none` suppresses the fix, while `safe` and `unsafe` reclassify its applicability. This setting does not change the fix itself.
@@ -13916,6 +13928,7 @@ export type UseTailwindVariablesShorthandOptions = {};
 export type UseTanstackQueryInfiniteQueryPropertyOrderOptions = {};
 export type UseTanstackQueryStableQueryClientOptions = {};
 export type UseTopLevelHeadingOptions = {};
+export type UseTopLevelRequireOptions = {};
 export type UseUnaryMinusOptions = {};
 export type UseValidCharacterComparisonOptions = {};
 export interface UseValidTestTitleOptions {
@@ -15542,8 +15555,8 @@ export type Category =
 	| "lint/correctness/useYield"
 	| "lint/nursery/noAccidentalBitwiseOperators"
 	| "lint/nursery/noArgumentsCallerOrCallee"
-	| "lint/nursery/noArrayMethodsOnArguments"
 	| "lint/nursery/noArrayForEach"
+	| "lint/nursery/noArrayMethodsOnArguments"
 	| "lint/nursery/noArraySortForMinMax"
 	| "lint/nursery/noAstroConflictingSetDirectives"
 	| "lint/nursery/noAstroSetHtmlDirective"
@@ -15554,16 +15567,16 @@ export type Category =
 	| "lint/nursery/noBunModules"
 	| "lint/nursery/noChainedComparison"
 	| "lint/nursery/noColorInvalidHex"
-	| "lint/nursery/noDanglingUnderscore"
-	| "lint/nursery/noConsoleSpaces"
-	| "lint/nursery/noConstantComparisons"
-	| "lint/nursery/noDuplicateMapKeys"
 	| "lint/nursery/noComponentHookFactories"
 	| "lint/nursery/noConditionalExpect"
+	| "lint/nursery/noConsoleSpaces"
+	| "lint/nursery/noConstantComparisons"
+	| "lint/nursery/noDanglingUnderscore"
 	| "lint/nursery/noDoubleComparison"
 	| "lint/nursery/noDrizzleDeleteWithoutWhere"
 	| "lint/nursery/noDrizzleUpdateWithoutWhere"
 	| "lint/nursery/noDuplicateFieldDefinitionNames"
+	| "lint/nursery/noDuplicateMapKeys"
 	| "lint/nursery/noDuplicateSelectors"
 	| "lint/nursery/noDuplicateTypeConstituents"
 	| "lint/nursery/noDynamicDelete"
@@ -15642,8 +15655,8 @@ export type Category =
 	| "lint/nursery/noSelfNestedLayer"
 	| "lint/nursery/noSharedBranchCode"
 	| "lint/nursery/noShortTimeValues"
-	| "lint/nursery/noSubtractionComparison"
 	| "lint/nursery/noSinglePromiseInPromiseMethods"
+	| "lint/nursery/noSubtractionComparison"
 	| "lint/nursery/noSvelteAddEventListener"
 	| "lint/nursery/noSvelteAsyncStore"
 	| "lint/nursery/noSvelteAtDebugTags"
@@ -15670,9 +15683,9 @@ export type Category =
 	| "lint/nursery/noUndeclaredCustomProperties"
 	| "lint/nursery/noUninvokedArrayCallback"
 	| "lint/nursery/noUnmodifiedLoopCondition"
+	| "lint/nursery/noUnnecessaryStringTrim"
 	| "lint/nursery/noUnreadableForOfExpression"
 	| "lint/nursery/noUnreadableIife"
-	| "lint/nursery/noUnnecessaryStringTrim"
 	| "lint/nursery/noUnresolvedDefaultImport"
 	| "lint/nursery/noUnsafeIframeSandbox"
 	| "lint/nursery/noUnsafePlusOperands"
@@ -15713,23 +15726,23 @@ export type Category =
 	| "lint/nursery/noVueDeprecatedScopedSlots"
 	| "lint/nursery/noVueDeprecatedSlotAttribute"
 	| "lint/nursery/noVueDeprecatedSlotScope"
+	| "lint/nursery/noVueDeprecatedVBindSync"
 	| "lint/nursery/noVueDeprecatedVOnNativeModifier"
 	| "lint/nursery/noVueExcessiveProps"
+	| "lint/nursery/noVueExposeAfterAwait"
+	| "lint/nursery/noVueImportCompilerMacros"
 	| "lint/nursery/noVueLifecycleAfterAwait"
 	| "lint/nursery/noVueLoneTemplate"
 	| "lint/nursery/noVueMixin"
 	| "lint/nursery/noVueMultipleObjectsInClass"
 	| "lint/nursery/noVueMultipleSlotArgs"
 	| "lint/nursery/noVueMutatingProps"
-	| "lint/nursery/noVueRestrictedCallAfterAwait"
-	| "lint/nursery/noVueDeprecatedVBindSync"
-	| "lint/nursery/noVueRootVIf"
-	| "lint/nursery/noVueExposeAfterAwait"
-	| "lint/nursery/noVueImportCompilerMacros"
 	| "lint/nursery/noVueRefAsOperand"
 	| "lint/nursery/noVueRefObjectReactivityLoss"
 	| "lint/nursery/noVueRequiredPropWithDefault"
+	| "lint/nursery/noVueRestrictedCallAfterAwait"
 	| "lint/nursery/noVueRestrictedVOn"
+	| "lint/nursery/noVueRootVIf"
 	| "lint/nursery/noVueShadowNativeEvents"
 	| "lint/nursery/noVueSideEffectsInComputed"
 	| "lint/nursery/noVueTemplateKey"
@@ -15806,9 +15819,9 @@ export type Category =
 	| "lint/nursery/useNamedLayer"
 	| "lint/nursery/useNextScriptForGoogleAnalytics"
 	| "lint/nursery/useNullishCoalescing"
+	| "lint/nursery/useObjectFromEntries"
 	| "lint/nursery/usePackageJsonCpu"
 	| "lint/nursery/usePackageJsonEngines"
-	| "lint/nursery/useObjectFromEntries"
 	| "lint/nursery/usePackageJsonValidCpu"
 	| "lint/nursery/usePackageJsonValidEngines"
 	| "lint/nursery/usePromiseRejectErrors"
@@ -15838,6 +15851,7 @@ export type Category =
 	| "lint/nursery/useTanstackQueryInfiniteQueryPropertyOrder"
 	| "lint/nursery/useTanstackQueryStableQueryClient"
 	| "lint/nursery/useTopLevelHeading"
+	| "lint/nursery/useTopLevelRequire"
 	| "lint/nursery/useUnaryMinus"
 	| "lint/nursery/useUniqueArgumentNames"
 	| "lint/nursery/useUniqueFieldDefinitionNames"
@@ -15859,9 +15873,9 @@ export type Category =
 	| "lint/nursery/useVueConsistentVForDelimiter"
 	| "lint/nursery/useVueConsistentVSlotStyle"
 	| "lint/nursery/useVueDefaultExport"
-	| "lint/nursery/useVueDefinePropsDestructuring"
-	| "lint/nursery/useVueDefineOptions"
 	| "lint/nursery/useVueDefaultProp"
+	| "lint/nursery/useVueDefineOptions"
+	| "lint/nursery/useVueDefinePropsDestructuring"
 	| "lint/nursery/useVueEmitValidator"
 	| "lint/nursery/useVueEmitsValidatorReturn"
 	| "lint/nursery/useVueMacroVariableName"
@@ -15872,28 +15886,28 @@ export type Category =
 	| "lint/nursery/useVueRenderReturn"
 	| "lint/nursery/useVueSeparateStaticClass"
 	| "lint/nursery/useVueSingleEventPayload"
+	| "lint/nursery/useVueSlotNameCasing"
 	| "lint/nursery/useVueSlotsAsFunctions"
 	| "lint/nursery/useVueTemplateRef"
-	| "lint/nursery/useVueSlotNameCasing"
 	| "lint/nursery/useVueToggleInsideTransition"
 	| "lint/nursery/useVueTypedObjectProps"
 	| "lint/nursery/useVueTypedProps"
 	| "lint/nursery/useVueTypedRef"
+	| "lint/nursery/useVueVModel"
+	| "lint/nursery/useVueVOnExact"
 	| "lint/nursery/useVueValidAttributeName"
 	| "lint/nursery/useVueValidDefaultProp"
 	| "lint/nursery/useVueValidDefineEmits"
 	| "lint/nursery/useVueValidDefineOptions"
 	| "lint/nursery/useVueValidDefineProps"
 	| "lint/nursery/useVueValidNextTick"
-	| "lint/nursery/useVueVOnExact"
 	| "lint/nursery/useVueValidVFor"
 	| "lint/nursery/useVueValidVIs"
 	| "lint/nursery/useVueValidVMemo"
 	| "lint/nursery/useVueValidVModel"
-	| "lint/nursery/useVueVModel"
-	| "lint/nursery/useWhileLoopCondition"
 	| "lint/nursery/useVueValidVShow"
 	| "lint/nursery/useVueValidVSlot"
+	| "lint/nursery/useWhileLoopCondition"
 	| "lint/performance/noAccumulatingSpread"
 	| "lint/performance/noAwaitInLoops"
 	| "lint/performance/noBarrelFile"

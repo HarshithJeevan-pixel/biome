@@ -10412,6 +10412,13 @@
 						{ "type": "null" }
 					]
 				},
+				"useCalledWith": {
+					"description": "Enforce using toHaveBeenCalledWith() to check the arguments of a function call.\nSee https://biomejs.dev/linter/rules/use-called-with",
+					"anyOf": [
+						{ "$ref": "#/$defs/UseCalledWithConfiguration" },
+						{ "type": "null" }
+					]
+				},
 				"useCapitalizedConstructors": {
 					"description": "Require constructor names to begin with a capital letter.\nSee https://biomejs.dev/linter/rules/use-capitalized-constructors",
 					"anyOf": [
@@ -17420,6 +17427,15 @@
 			"additionalProperties": false,
 			"required": ["level"]
 		},
+		"RuleWithUseCalledWithOptions": {
+			"type": "object",
+			"properties": {
+				"level": { "$ref": "#/$defs/RulePlainConfiguration" },
+				"options": { "$ref": "#/$defs/UseCalledWithOptions" }
+			},
+			"additionalProperties": false,
+			"required": ["level"]
+		},
 		"RuleWithUseCapitalizedConstructorsOptions": {
 			"type": "object",
 			"properties": {
@@ -22936,6 +22952,13 @@
 			]
 		},
 		"UseButtonTypeOptions": { "type": "object", "additionalProperties": false },
+		"UseCalledWithConfiguration": {
+			"oneOf": [
+				{ "$ref": "#/$defs/RulePlainConfiguration" },
+				{ "$ref": "#/$defs/RuleWithUseCalledWithOptions" }
+			]
+		},
+		"UseCalledWithOptions": { "type": "object", "additionalProperties": false },
 		"UseCapitalizedConstructorsConfiguration": {
 			"oneOf": [
 				{ "$ref": "#/$defs/RulePlainConfiguration" },

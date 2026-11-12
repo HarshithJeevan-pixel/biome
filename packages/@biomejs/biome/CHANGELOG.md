@@ -1,5 +1,13 @@
 # @biomejs/biome
 
+## 2.6.8
+
+### Patch Changes
+
+- [#13098](https://github.com/biomejs/biome/pull/13098) [`d3be626`](https://github.com/biomejs/biome/commit/d3be626ab75ea3a4db7df9e3180864d97f86f8d5) Thanks [@ashokram-si](https://github.com/ashokram-si)! - Fixed [#13084](https://github.com/biomejs/biome/issues/13084): The [`useThisInClassMethods`](https://biomejs.dev/linter/rules/use-this-in-class-methods/) rule now correctly recognizes `this` when used inside parameter default values for methods, setters, and class fields.
+
+- [#12551](https://github.com/biomejs/biome/pull/12551) [`ca039a1`](https://github.com/biomejs/biome/commit/ca039a13fb60ee7895a7eb2ef6f47170f4844738) Thanks [@pkallos](https://github.com/pkallos)! - Fixed [#9842](https://github.com/biomejs/biome/issues/9842): [`useNullishCoalescing`](https://biomejs.dev/linter/rules/use-nullish-coalescing/) no longer skips `||` and `||=` inside a call to a locally declared `Boolean` when `ignoreBooleanCoercion` is enabled.
+
 ## 2.6.7
 
 ### Patch Changes
